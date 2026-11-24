@@ -1,24 +1,14 @@
 import type { Metadata } from 'next'
-import { SITE_URL } from '@/lib/artigos/seo'
+import { createPageMetadata } from '@/lib/page-metadata'
 import PlanejamentoPatrimonialContent from './PlanejamentoPatrimonialContent'
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
+  path: '/planejamento-defesa-patrimonial',
   title: 'Planejamento e Defesa Patrimonial Rural',
-  description:
-    'Organização jurídica de bens, contratos e sucessão para proteger o patrimônio rural construído em gerações contra cobranças e disputas futuras.',
-  alternates: {
-    canonical: `${SITE_URL}/planejamento-defesa-patrimonial`,
-  },
-  openGraph: {
-    type: 'website',
-    url: `${SITE_URL}/planejamento-defesa-patrimonial`,
-    title: 'Planejamento e Defesa Patrimonial Rural | CBM Agro e Gestão de Passivos',
-    description:
-      'Organização jurídica de bens, contratos e sucessão para proteger o patrimônio rural construído em gerações.',
-    siteName: 'CBM Agro e Gestão de Passivos',
-    locale: 'pt_BR',
-  },
-}
+  description: 'Organização jurídica de bens, contratos e sucessão para proteger o patrimônio rural construído em gerações contra cobranças e disputas futuras.',
+  socialTitle: 'Planejamento e Defesa Patrimonial Rural | CBM Agro e Gestão de Passivos',
+  socialDescription: 'Organização jurídica de bens, contratos e sucessão para proteger o patrimônio rural construído em gerações.',
+})
 
 export default function PlanejamentoDefesaPatrimonialPage() {
   return <PlanejamentoPatrimonialContent />

@@ -17,7 +17,10 @@ function AnimatedCounter({
   isInView: boolean
   formatNumber: (n: number) => string
 }) {
-  const [count, setCount] = useState(0)
+  // Começa no valor final para que o HTML do servidor (lido pelo Google e por quem
+  // está sem JavaScript) mostre o número real, não "0". A contagem animada só
+  // acontece quando a seção entra na tela.
+  const [count, setCount] = useState(value)
   const duration = 2000
   const steps = 60
   const stepDuration = duration / steps
@@ -26,6 +29,7 @@ function AnimatedCounter({
     if (!isInView) return
     let current = 0
     const increment = value / steps
+    const resetFrame = requestAnimationFrame(() => setCount(0))
     const timer = setInterval(() => {
       current += increment
       if (current >= value) {
@@ -35,7 +39,10 @@ function AnimatedCounter({
         setCount(Math.floor(current))
       }
     }, stepDuration)
-    return () => clearInterval(timer)
+    return () => {
+      cancelAnimationFrame(resetFrame)
+      clearInterval(timer)
+    }
   }, [isInView, value, stepDuration])
 
   return (

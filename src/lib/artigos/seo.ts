@@ -1,16 +1,12 @@
 import type { Metadata } from 'next'
 import type { ArticleDocument } from './schema'
+import { DEFAULT_OG_IMAGE, ORGANIZATION_ID, SITE_NAME, SITE_URL, WEBSITE_ID, absoluteUrl } from '@/lib/site'
 
-export const SITE_URL = 'https://cbmgestaodepassivos.com.br'
-export const SITE_NAME = 'CBM Agro e Gestão de Passivos'
-export const ORGANIZATION_ID = `${SITE_URL}/#organization`
-export const ARTICLES_URL = `${SITE_URL}/artigos`
+export { ORGANIZATION_ID, SITE_NAME, SITE_URL }
+export const BLOG_PATH = '/blog'
+export const ARTICLES_URL = `${SITE_URL}${BLOG_PATH}`
 
 type JsonLdNode = Record<string, unknown>
-
-function absoluteUrl(pathname: string): string {
-  return new URL(pathname, SITE_URL).toString()
-}
 
 function articleUrl(article: ArticleDocument): string {
   return absoluteUrl(article.href)
@@ -25,10 +21,10 @@ export function createArticlesMetadata(count: number): Metadata {
 
   return {
     title: hasPublishedArticles
-      ? 'Artigos para decisões rurais que não aceitam improviso'
-      : 'Artigos em preparação',
+      ? 'Blog de Direito Bancário e Agrário para o produtor rural'
+      : 'Blog em preparação',
     description: hasPublishedArticles
-      ? 'Orientações jurídicas para decisões rurais que exigem estratégia e segurança.'
+      ? 'Artigos sobre crédito rural, alongamento de dívida, execução, busca e apreensão e recuperação judicial do produtor rural.'
       : 'Novos artigos jurídicos para o produtor rural estão em preparação.',
     alternates: { canonical: ARTICLES_URL },
     robots: { index: hasPublishedArticles, follow: true },
@@ -36,13 +32,14 @@ export function createArticlesMetadata(count: number): Metadata {
       type: 'website',
       url: ARTICLES_URL,
       title: hasPublishedArticles
-        ? `Artigos | ${SITE_NAME}`
-        : `Artigos em preparação | ${SITE_NAME}`,
+        ? `Blog | ${SITE_NAME}`
+        : `Blog em preparação | ${SITE_NAME}`,
       description: hasPublishedArticles
-        ? 'Orientações jurídicas para decisões rurais que exigem estratégia e segurança.'
+        ? 'Artigos sobre crédito rural, alongamento de dívida, execução, busca e apreensão e recuperação judicial do produtor rural.'
         : 'Novos artigos jurídicos para o produtor rural estão em preparação.',
       siteName: SITE_NAME,
       locale: 'pt_BR',
+      images: [DEFAULT_OG_IMAGE],
     },
   }
 }
@@ -97,15 +94,15 @@ export function createArticlesJsonLd(articles: ArticleDocument[]): { '@context':
         '@type': 'CollectionPage',
         '@id': `${ARTICLES_URL}#collection-page`,
         url: ARTICLES_URL,
-        name: 'Artigos',
-        isPartOf: { '@id': `${SITE_URL}/#website` },
+        name: 'Blog',
+        isPartOf: { '@id': WEBSITE_ID },
         about: { '@id': ORGANIZATION_ID },
       },
       {
         '@type': 'Blog',
         '@id': `${ARTICLES_URL}#blog`,
         url: ARTICLES_URL,
-        name: 'Artigos | CBM Agro e Gestão de Passivos',
+        name: `Blog | ${SITE_NAME}`,
         publisher: { '@id': ORGANIZATION_ID },
       },
       {
@@ -119,8 +116,8 @@ export function createArticlesJsonLd(articles: ArticleDocument[]): { '@context':
         '@type': 'BreadcrumbList',
         '@id': `${ARTICLES_URL}#breadcrumb`,
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Início', item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: 'Artigos', item: ARTICLES_URL },
+          { '@type': 'ListItem', position: 1, name: 'Início', item: `${SITE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: ARTICLES_URL },
         ],
       },
     ],
@@ -152,8 +149,8 @@ export function createArticleJsonLd(article: ArticleDocument): { '@context': 'ht
         '@type': 'BreadcrumbList',
         '@id': `${url}#breadcrumb`,
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Início', item: SITE_URL },
-          { '@type': 'ListItem', position: 2, name: 'Artigos', item: ARTICLES_URL },
+          { '@type': 'ListItem', position: 1, name: 'Início', item: `${SITE_URL}/` },
+          { '@type': 'ListItem', position: 2, name: 'Blog', item: ARTICLES_URL },
           { '@type': 'ListItem', position: 3, name: article.title, item: url },
         ],
       },
@@ -169,6 +166,7 @@ const STATIC_PUBLIC_PATHS = [
   '/recuperacao-judicial-produtor-rural',
   '/contencioso-tributario-rural',
   '/planejamento-defesa-patrimonial',
+  '/analise-elaboracao-de-contrato',
   '/politica-de-privacidade',
   '/politica-de-cookies',
   '/termos-de-uso',

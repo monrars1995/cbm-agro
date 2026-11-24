@@ -51,7 +51,7 @@ export type ArticleFrontmatter = z.infer<typeof ArticleFrontmatterSchema>
 export type ArticleEnvironment = 'development' | 'test' | 'production'
 
 export interface ArticleSummary extends ArticleFrontmatter {
-  href: `/artigos/${string}`
+  href: `/blog/${string}`
   readingTimeMinutes: number
 }
 

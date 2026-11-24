@@ -1,5 +1,3 @@
-"use client";
-
 import Header from "@/components/cbm/Header";
 import Hero from "@/components/cbm/Hero";
 import Services from "@/components/cbm/Services";
@@ -14,6 +12,43 @@ import CTABanner from "@/components/cbm/CTABanner";
 import Contact from "@/components/cbm/Contact";
 import Footer from "@/components/cbm/Footer";
 import ScrollTracker from "@/components/cbm/ScrollTracker";
+import JsonLd from "@/components/artigos/JsonLd";
+import type { Metadata } from "next";
+import { createHomeFaqPageNode } from "@/lib/home-faq";
+import { ORGANIZATION_ID, SITE_NAME, SITE_URL, WEBSITE_ID } from "@/lib/site";
+import { createPageMetadata } from "@/lib/page-metadata";
+
+const HOME_TITLE = "CBM Agro e Gestão de Passivos | Advocacia Especializada em Direito Bancário e Agrário";
+const HOME_DESCRIPTION =
+  "Escudo jurídico do produtor rural: Direito Bancário e Agrário. Alongamento, defesa em execução, busca e apreensão e renegociação de dívidas. Atendimento em todo o Brasil.";
+
+export const metadata: Metadata = {
+  ...createPageMetadata({
+    path: "/",
+    title: HOME_TITLE,
+    description: HOME_DESCRIPTION,
+    socialTitle: HOME_TITLE,
+  }),
+  // A home usa o título completo, sem o sufixo do template.
+  title: { absolute: HOME_TITLE },
+};
+
+const homeJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/#webpage`,
+      url: `${SITE_URL}/`,
+      name: SITE_NAME,
+      description: HOME_DESCRIPTION,
+      isPartOf: { "@id": WEBSITE_ID },
+      about: { "@id": ORGANIZATION_ID },
+      inLanguage: "pt-BR",
+    },
+    createHomeFaqPageNode(SITE_URL),
+  ],
+};
 
 export default function Home() {
   return (
@@ -47,6 +82,7 @@ export default function Home() {
         />
       </main>
       <Footer />
+      <JsonLd data={homeJsonLd} />
     </div>
   );
 }

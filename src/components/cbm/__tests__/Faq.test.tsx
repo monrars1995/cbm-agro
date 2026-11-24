@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import { describe, expect, it } from 'vitest'
 import Faq from '../Faq'
+import { createHomeFaqPageNode } from '@/lib/home-faq'
 
 describe('home FAQ section', () => {
   const html = renderToStaticMarkup(<Faq />)
@@ -25,12 +26,20 @@ describe('home FAQ section', () => {
     expect(html).toContain('Defesa contra Cobrança e Execução Judicial')
   })
 
-  it('mantém os novos serviços idênticos na resposta visível e no FAQPage global', () => {
+  it('mantém os novos serviços idênticos na resposta visível e no FAQPage da home', () => {
     const answer = 'Os principais serviços da CBM são: Defesa contra Cobrança e Execução Judicial, Renegociação e Redução de Dívidas, Defesa para Produtores Rurais Endividados, Defesa contra Busca e Apreensão de bens, Recuperação Judicial do Produtor Rural, Contencioso Tributário Rural e Planejamento e Defesa Patrimonial.'
-    const layoutSource = readFileSync(resolve(process.cwd(), 'src/app/layout.tsx'), 'utf8')
+    const faqPage = createHomeFaqPageNode('https://cbmagro.com.br')
 
     expect(html).toContain(answer)
-    expect(layoutSource).toContain(`text: "${answer}"`)
+    expect(JSON.stringify(faqPage)).toContain(answer)
+  })
+
+  it('injeta o FAQPage só na home, não no layout global', () => {
+    const layoutSource = readFileSync(resolve(process.cwd(), 'src/app/layout.tsx'), 'utf8')
+    const homeSource = readFileSync(resolve(process.cwd(), 'src/app/page.tsx'), 'utf8')
+
+    expect(layoutSource).not.toContain('"@type": "FAQPage"')
+    expect(homeSource).toContain('createHomeFaqPageNode')
   })
 
   it('usa details/summary nativo com as respostas no HTML estático', () => {

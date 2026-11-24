@@ -5,6 +5,7 @@ import { motion, useInView } from 'framer-motion'
 import { MapPin, Clock } from 'lucide-react'
 import SectionHeading from './SectionHeading'
 import StepLeadForm from './StepLeadForm'
+import { NAP } from '@/lib/site'
 
 const contactInfo = [
   {
@@ -13,8 +14,8 @@ const contactInfo = [
     lines: [
       'Av. Getúlio Vargas, 3233',
       'Edf Trade Center, Sala 401 e 402',
-      'Santa Mônica, Feira de Santana - BA',
-      'CEP: 44042-010',
+      `${NAP.neighborhood}, ${NAP.city} - ${NAP.region}`,
+      `CEP: ${NAP.postalCode}`,
     ],
   },
   {

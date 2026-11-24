@@ -1,6 +1,7 @@
 // DataLayer utility for GTM event tracking
 // Extends the window interface for TypeScript support
 
+import { NAP } from '@/lib/site'
 import { resolveMetaPixelIds } from './metaPixels'
 
 declare global {
@@ -267,7 +268,7 @@ export function trackEmailClick(source: string): void {
   pushEvent({
     event: 'email_click',
     event_category: 'contato',
-    event_label: 'contato@cbmgestaodepassivos.com.br',
+    event_label: NAP.email,
     event_section: source,
   })
 }

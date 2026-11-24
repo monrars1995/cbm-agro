@@ -17,7 +17,7 @@ const publishedSummary: ArticleSummary = {
   draft: false,
   publishedAt: '2026-09-01',
   updatedAt: '2026-09-01',
-  href: '/artigos/artigo-publicado',
+  href: '/blog/artigo-publicado',
   readingTimeMinutes: 5,
 }
 
@@ -25,7 +25,7 @@ it('renderiza card como article com link, categoria e time', () => {
   const html = renderToStaticMarkup(<ArticleCard article={publishedSummary} />)
 
   expect(html).toContain('<article')
-  expect(html).toContain('href="/artigos/artigo-publicado"')
+  expect(html).toContain('href="/blog/artigo-publicado"')
   expect(html).toContain('<time')
   expect(html).toContain('Direito Agrário')
 })

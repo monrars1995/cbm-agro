@@ -19,7 +19,7 @@ const draftArticle: ArticleDocument = {
   draft: true,
   publishedAt: null,
   updatedAt: null,
-  href: '/artigos/artigo-em-revisao',
+  href: '/blog/artigo-em-revisao',
   readingTimeMinutes: 5,
   body: 'Conteúdo em revisão.',
   plainText: 'Conteúdo em revisão.',
@@ -31,7 +31,7 @@ describe('article detail components', () => {
     const html = renderToStaticMarkup(<ArticleBreadcrumbs title={draftArticle.title} />)
 
     expect(html).toContain('aria-label="Breadcrumb"')
-    expect(html).toContain('href="/artigos"')
+    expect(html).toContain('href="/blog"')
     expect(html).toContain('aria-current="page"')
   })
 
