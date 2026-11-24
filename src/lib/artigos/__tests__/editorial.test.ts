@@ -7,7 +7,7 @@ import { articleRepository } from '../repository'
  * Regras do plano editorial (clusters do blog, OAB e YMYL), aplicadas a todo
  * artigo criado ou atualizado a partir do início do calendário editorial.
  */
-const EDITORIAL_RULES_SINCE = '2026-11-30'
+const EDITORIAL_RULES_SINCE = '2026-11-24'
 const BANNED_TERMS = [/gratuit/i, /garantimos/i, /garantia de resultado/i, /100\s?%/, /blindagem/i, /o melhor escritório/i]
 
 describe('regras editoriais do blog', () => {
