@@ -9,6 +9,8 @@ import ArticleCard from '@/components/artigos/ArticleCard'
 import ArticleCta from '@/components/artigos/ArticleCta'
 import ArticleHeader from '@/components/artigos/ArticleHeader'
 import JsonLd from '@/components/artigos/JsonLd'
+import Link from 'next/link'
+import { getArticleClusterContext, getRelatedArticles } from '@/lib/artigos/clusters'
 import { articleRepository } from '@/lib/artigos/repository'
 import { createArticleJsonLd, createArticleMetadata } from '@/lib/artigos/seo'
 
@@ -42,9 +44,9 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     notFound()
   }
 
-  const relatedArticles = (await articleRepository.getPublishedArticles())
-    .filter((candidate) => candidate.slug !== article.slug && candidate.category === article.category)
-    .slice(0, 3)
+  const published = await articleRepository.getPublishedArticles()
+  const relatedArticles = getRelatedArticles(article, published)
+  const clusterContext = getArticleClusterContext(article, published)
 
   return (
     <>
@@ -74,6 +76,27 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
               <div className="mt-12">
                 <ArticleBody source={article.body} />
               </div>
+              {clusterContext ? (
+                <nav aria-label="Guia do tema" className="mx-auto mt-12 max-w-[72ch] rounded-[1.25rem] border border-warm-border bg-warm-white p-6">
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-copper">{clusterContext.clusterName}</p>
+                  <ul className="mt-3 space-y-2 text-text-medium">
+                    {clusterContext.pillar ? (
+                      <li>
+                        Guia completo do tema:{' '}
+                        <Link href={clusterContext.pillar.href} className="font-semibold text-teal-dark underline decoration-copper/40 underline-offset-4 hover:text-copper">
+                          {clusterContext.pillar.title}
+                        </Link>
+                      </li>
+                    ) : null}
+                    <li>
+                      Como o escritório atua:{' '}
+                      <Link href={`/${clusterContext.service.slug}`} className="font-semibold text-teal-dark underline decoration-copper/40 underline-offset-4 hover:text-copper">
+                        {clusterContext.service.name}
+                      </Link>
+                    </li>
+                  </ul>
+                </nav>
+              ) : null}
               <aside className="mx-auto mt-10 max-w-[72ch] border-l-4 border-copper/40 bg-warm-white px-5 py-4 text-sm leading-relaxed text-text-medium">
                 Este conteúdo tem caráter educativo e não substitui a análise jurídica individual dos documentos e circunstâncias do caso.
               </aside>
@@ -92,7 +115,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </section>
           ) : null}
 
-          <ArticleCta />
+          <ArticleCta service={clusterContext?.service} />
           <JsonLd data={createArticleJsonLd(article)} />
         </article>
       </main>

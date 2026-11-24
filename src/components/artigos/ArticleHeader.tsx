@@ -29,6 +29,11 @@ export default function ArticleHeader({ article }: { article: ArticleDocument })
         {article.publishedAt ? <span aria-hidden="true" className="h-1 w-1 rounded-full bg-gold/70" /> : null}
         <span>{article.readingTimeMinutes} min de leitura</span>
       </div>
+      {article.reviewedBy ? (
+        <p className="mt-3 text-sm text-warm-white/66">
+          Revisão jurídica: {article.reviewedBy.name}, {article.reviewedBy.oab}
+        </p>
+      ) : null}
     </header>
   )
 }

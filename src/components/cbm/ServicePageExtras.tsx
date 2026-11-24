@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { ArrowRight, ChevronDown, FileText } from 'lucide-react'
 import JsonLd from '@/components/artigos/JsonLd'
 import SectionHeading from '@/components/cbm/SectionHeading'
+import { getServiceArticles } from '@/lib/artigos/clusters'
 import { articleRepository } from '@/lib/artigos/repository'
 import { SERVICES, type ServiceSlug } from '@/lib/services'
 import { createServiceJsonLd } from '@/lib/service-jsonld'
@@ -13,9 +14,7 @@ import { createServiceJsonLd } from '@/lib/service-jsonld'
  */
 export default async function ServicePageExtras({ slug }: { slug: ServiceSlug }) {
   const service = SERVICES[slug]
-  const relatedArticles = (
-    await Promise.all(service.relatedArticles.map((articleSlug) => articleRepository.getArticleBySlug(articleSlug)))
-  ).filter((article): article is NonNullable<typeof article> => article !== null && !article.draft)
+  const relatedArticles = getServiceArticles(slug, await articleRepository.getPublishedArticles())
 
   return (
     <>
@@ -114,7 +113,7 @@ export default async function ServicePageExtras({ slug }: { slug: ServiceSlug })
                 href={article.href}
                 className="group flex flex-col justify-between rounded-[1.25rem] border border-warm-border bg-paper p-6 transition-colors hover:border-copper/45"
               >
-                <span className="text-xs font-bold uppercase tracking-[0.12em] text-copper">Artigo</span>
+                <span className="text-xs font-bold uppercase tracking-[0.12em] text-copper">{article.pillar ? 'Guia completo' : 'Artigo'}</span>
                 <span className="mt-3 text-base font-bold leading-snug text-teal-dark">{article.title}</span>
                 <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-copper">
                   Ler artigo <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-0.5" />

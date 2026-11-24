@@ -49,7 +49,7 @@ export function createArticleMetadata(article: ArticleDocument): Metadata {
   const isDraft = article.draft
 
   return {
-    title: article.title,
+    title: article.seoTitle ? { absolute: article.seoTitle } : article.title,
     description: article.description,
     keywords: article.keywords,
     authors: [{ name: article.author }],
@@ -133,7 +133,21 @@ export function createArticleJsonLd(article: ArticleDocument): { '@context': 'ht
       {
         '@type': 'BlogPosting',
         '@id': `${url}#blog-posting`,
-        mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': url,
+          ...(article.reviewedBy
+            ? {
+                reviewedBy: {
+                  '@type': 'Person',
+                  name: article.reviewedBy.name,
+                  jobTitle: 'Advogado',
+                  identifier: article.reviewedBy.oab,
+                  worksFor: { '@id': ORGANIZATION_ID },
+                },
+              }
+            : {}),
+        },
         headline: article.title,
         description: article.description,
         image: articleImageUrl(article),
