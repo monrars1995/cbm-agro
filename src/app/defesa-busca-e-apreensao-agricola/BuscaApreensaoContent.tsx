@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import StepLeadForm from '@/components/cbm/StepLeadForm'
 import SectionHeading from '@/components/cbm/SectionHeading'
-import Footer from '@/components/cbm/Footer'
 
 export default function BuscaApreensaoContent() {
   return (
@@ -27,24 +26,24 @@ export default function BuscaApreensaoContent() {
             <div className="animate-fade-up">
               <p className="mb-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.14em] text-warm-white">
                 <AlertTriangle className="size-4" />
-                Urgente: prazo de 5 dias
+                Prazos de 5 e 15 dias após a liminar
               </p>
 
               <h1 className="mb-6 text-4xl font-bold leading-[1.06] text-warm-white sm:text-5xl lg:text-5xl">
-                Mandado contra o maquinário?{' '}
-                <span className="text-gold-light">A resposta precisa ser imediata.</span>
+                Busca e apreensão de máquinas agrícolas:{' '}
+                <span className="text-gold-light">o que fazer quando o mandado chega.</span>
               </h1>
 
               <p className="mb-8 max-w-2xl text-lg leading-relaxed text-warm-white/72">
-                O oficial pode estar a caminho. Você tem poucos dias para contestar, provar essencialidade e pedir suspensão antes que a safra pare.
+                Tratores, colheitadeiras e implementos financiados com alienação fiduciária podem ser retirados por decisão liminar. Depois disso, os prazos para pagar ou contestar são curtos e precisam ser acompanhados de perto.
               </p>
 
               <ul className="space-y-3 mb-8">
                 {[
-                  'Contestação imediata do mandado judicial',
-                  'Pedido de liminar para suspender a apreensão',
-                  'Comprovação de bens essenciais à atividade rural',
-                  'Defesa contra cláusulas abusivas do contrato',
+                  'Conferência da notificação e da comprovação da mora',
+                  'Análise dos valores cobrados para a restituição do bem',
+                  'Contestação dentro do prazo legal',
+                  'Avaliação de bens essenciais em caso de recuperação judicial',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-warm-white/80">
                     <Check className="size-5 shrink-0 text-gold-light" />
@@ -58,8 +57,8 @@ export default function BuscaApreensaoContent() {
               <StepLeadForm
                 formId="lp_busca_apreensao"
                 source="lp_busca_apreensao"
-                title="Defesa urgente"
-                description="Preencha e nossa equipe avalia o risco de apreensão, essencialidade do bem e medida cabível para suspender a retirada."
+                title="Análise de busca e apreensão"
+                description="Envie os dados do caso. A equipe avalia o contrato, a notificação recebida e as medidas cabíveis no prazo."
                 defaultCaseType="busca_apreensao"
                 redirectTo="/obrigado-contato?src=urgencia"
                 urgent
@@ -75,17 +74,17 @@ export default function BuscaApreensaoContent() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             eyebrow="Linha do tempo"
-            title="Cinco dias mudam o destino do maquinário"
-            description="A defesa precisa chegar antes que a apreensão se consolide. O objetivo é preservar o bem essencial e manter a operação rural funcionando."
+            title="Os prazos começam a correr quando a liminar é cumprida"
+            description="Pelo Decreto-Lei nº 911/1969, o devedor tem 5 dias para pagar a dívida pendente e pedir o bem de volta e 15 dias para apresentar a contestação."
             className="mb-14"
           />
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Clock, day: 'Dia 1–2', title: 'Mandado Cumprido', desc: 'Oficial de justiça bate na porta da fazenda e pode retirar os bens imediatamente.' },
-              { icon: Truck, day: 'Dia 3-4', title: 'Bens Removidos', desc: 'Tratores, colheitadeiras e implementos levados para depósito judicial, sua safra para.' },
-              { icon: Shield, day: 'Dia 5', title: 'Prazo Final', desc: 'Último dia para apresentar contestação. Sem defesa, a apreensão se torna definitiva.' },
-              { icon: AlertTriangle, day: 'Após Dia 5', title: 'Perda Definitiva', desc: 'Bens consolidados com o banco. Possibilidade de leilão e prejuízo irreversível.' },
+              { icon: Truck, day: 'Dia 0', title: 'Liminar cumprida', desc: 'O oficial de justiça retira o bem, que fica com o credor ou com um depositário indicado por ele.' },
+              { icon: Clock, day: 'Até 5 dias', title: 'Pagamento e restituição', desc: 'O pagamento da integralidade da dívida pendente, conforme os valores do credor, permite pedir o bem de volta (art. 3º, § 2º).' },
+              { icon: Shield, day: 'Até 15 dias', title: 'Contestação', desc: 'Prazo para a resposta do devedor, que pode discutir a mora, a notificação e os valores cobrados (art. 3º, § 3º).' },
+              { icon: AlertTriangle, day: 'Depois do 5º dia', title: 'Consolidação da propriedade', desc: 'Sem pagamento, a propriedade se consolida com o credor, que pode vender o bem. A contestação segue em discussão.' },
             ].map((item, i) => (
               <Card key={item.day} className={`rounded-2xl border-warm-border bg-warm-white transition-all duration-500 hover:-translate-y-0.5 hover:border-clay/25 hover:shadow-lg hover:shadow-clay/10 animate-fade-up delay-${(i + 1) * 100}`}>
                 <CardContent className="p-6">
@@ -107,24 +106,23 @@ export default function BuscaApreensaoContent() {
       {/* ══════════ CTA ══════════ */}
       <section className="bg-warm-white py-20 sm:py-28">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-up">
-          <p className="text-clay text-sm font-semibold uppercase tracking-[0.11em] mb-3">Não espere</p>
+          <p className="text-clay text-sm font-semibold uppercase tracking-[0.11em] mb-3">Prazos curtos</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-teal-dark mb-4">
-            Cada hora sem defesa aumenta o risco ao seu patrimônio
+            Recebeu notificação ou mandado? Reúna os documentos
           </h2>
           <p className="text-text-medium mb-8 max-w-2xl mx-auto leading-relaxed">
-            Nossa equipe especializada está de plantão para montar sua defesa imediata. Não deixe que a inércia leve seus bens.
+            Contrato, notificação e mandado permitem verificar a regularidade do pedido e os valores cobrados. Quanto antes a análise começar, mais opções ficam disponíveis dentro dos prazos.
           </p>
           <Button
             onClick={() => document.getElementById('lp-form')?.scrollIntoView({ behavior: 'smooth' })}
             className="group rounded-xl bg-clay px-10 py-6 text-base font-semibold text-warm-white transition-all duration-300 hover:bg-copper hover:shadow-lg hover:shadow-clay/15"
           >
-            Acionar Defesa Emergencial
+            Solicitar análise do caso
             <ArrowRight className="size-5 ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

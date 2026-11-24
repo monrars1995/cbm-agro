@@ -17,8 +17,8 @@ export default function PrivacidadeContent() {
           <p>
             A <strong>Carlos Benjamim Morais Sociedade Individual de Advocacia</strong>{' '}
             (CBM Agro), inscrita no CNPJ sob o nº 47.878.182/0001-61, com sede na
-            Avenida Getulio Vargas, 3233 - Santa Monica, Feira de Santana - BA,
-            44.077-005, valoriza a privacidade de seus clientes e parceiros e está
+            Edifício Trade Center, Av. Getúlio Vargas, 3233, Salas 401 e 402 - Santa Mônica,
+            Feira de Santana - BA, 44077-420, valoriza a privacidade de seus clientes e parceiros e está
             comprometida em proteger os dados pessoais tratados em nossas
             atividades, em conformidade com a Lei Geral de Proteção de Dados (Lei
             nº 13.709/2018 - LGPD).

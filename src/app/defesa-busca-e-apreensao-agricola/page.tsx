@@ -1,11 +1,29 @@
 import type { Metadata } from 'next'
+import Header from '@/components/cbm/Header'
+import Footer from '@/components/cbm/Footer'
+import ServicePageExtras from '@/components/cbm/ServicePageExtras'
+import { createPageMetadata } from '@/lib/page-metadata'
+import { SERVICES } from '@/lib/services'
 import BuscaApreensaoContent from './BuscaApreensaoContent'
 
-export const metadata: Metadata = {
-  title: 'Defesa contra Busca e Apreensão Agrícola',
-  description: 'Atuação emergencial para proteger máquinas, veículos e bens essenciais contra busca e apreensão.',
-}
+const service = SERVICES['defesa-busca-e-apreensao-agricola']
+
+export const metadata: Metadata = createPageMetadata({
+  path: `/${service.slug}`,
+  title: service.title,
+  description: service.description,
+  absoluteTitle: true,
+})
 
 export default function DefesaBuscaApreensaoAgricolaPage() {
-  return <BuscaApreensaoContent />
+  return (
+    <>
+      <Header />
+      <main>
+        <BuscaApreensaoContent />
+        <ServicePageExtras slug={service.slug} />
+      </main>
+      <Footer />
+    </>
+  )
 }

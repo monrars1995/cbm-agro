@@ -1,11 +1,29 @@
 import type { Metadata } from 'next'
+import Header from '@/components/cbm/Header'
+import Footer from '@/components/cbm/Footer'
+import ServicePageExtras from '@/components/cbm/ServicePageExtras'
+import { createPageMetadata } from '@/lib/page-metadata'
+import { SERVICES } from '@/lib/services'
 import AlongamentoContent from './AlongamentoContent'
 
-export const metadata: Metadata = {
-  title: 'Alongamento de Dívida Rural',
-  description: 'Defesa jurídica para alongamento de dívida rural, safra frustrada e renegociação de crédito rural.',
-}
+const service = SERVICES['alongamento-de-divida-rural']
+
+export const metadata: Metadata = createPageMetadata({
+  path: `/${service.slug}`,
+  title: service.title,
+  description: service.description,
+  absoluteTitle: true,
+})
 
 export default function AlongamentoPage() {
-  return <AlongamentoContent />
+  return (
+    <>
+      <Header />
+      <main>
+        <AlongamentoContent />
+        <ServicePageExtras slug={service.slug} />
+      </main>
+      <Footer />
+    </>
+  )
 }

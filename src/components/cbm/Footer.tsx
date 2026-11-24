@@ -3,6 +3,7 @@
 import { Instagram, Linkedin, Facebook, Phone, Mail, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import { trackFooterClick, trackPhoneClick, trackEmailClick, trackSocialClick } from '@/lib/dataLayer'
+import { NAP, NAP_ADDRESS_LINE, SOCIAL_PROFILES, LAW_FIRM } from '@/lib/site'
 
 const navLinks = [
   { label: 'Início', href: '/#inicio' },
@@ -25,9 +26,9 @@ const serviceLinks = [
 ]
 
 const socialLinks = [
-  { icon: Instagram, href: 'https://www.instagram.com/cbmgestaodepassivos', label: 'Instagram', platform: 'instagram' },
-  { icon: Linkedin, href: 'https://www.linkedin.com/company/cbm-gestao-de-passivos', label: 'LinkedIn', platform: 'linkedin' },
-  { icon: Facebook, href: 'https://www.facebook.com/cbmgestaodepassivos', label: 'Facebook', platform: 'facebook' },
+  { icon: Instagram, href: SOCIAL_PROFILES[0], label: 'Instagram', platform: 'instagram' },
+  { icon: Linkedin, href: SOCIAL_PROFILES[1], label: 'LinkedIn', platform: 'linkedin' },
+  { icon: Facebook, href: SOCIAL_PROFILES[2], label: 'Facebook', platform: 'facebook' },
 ]
 
 export default function Footer() {
@@ -132,27 +133,27 @@ export default function Footer() {
                 <li className="flex items-start gap-3">
                   <Phone className="size-4 text-gold mt-0.5 shrink-0" aria-hidden="true" />
                   <a
-                    href="tel:+557196772343"
+                    href={`tel:${NAP.phoneE164}`}
                     className="text-warm-white/52 hover:text-gold text-sm transition-colors duration-200"
                     onClick={() => trackPhoneClick('footer')}
                   >
-                    71 99677-2343
+                    {NAP.phoneDisplay}
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="size-4 text-gold mt-0.5 shrink-0" aria-hidden="true" />
                   <a
-                    href="mailto:contato@cbmgestaodepassivos.com.br"
+                    href={`mailto:${NAP.email}`}
                     className="text-warm-white/52 hover:text-gold text-sm transition-colors duration-200 break-all"
                     onClick={() => trackEmailClick('footer')}
                   >
-                    contato@cbmgestaodepassivos.com.br
+                    {NAP.email}
                   </a>
                 </li>
                 <li className="flex items-start gap-3">
                   <MapPin className="size-4 text-gold mt-0.5 shrink-0" aria-hidden="true" />
                   <span className="text-warm-white/52 text-sm leading-relaxed">
-                    Av. Getúlio Vargas, 3233, Edf Trade Center, Sala 401 e 402 - Santa Monica, Feira de Santana - BA
+                    {NAP_ADDRESS_LINE}
                   </span>
                 </li>
               </ul>
@@ -170,7 +171,7 @@ export default function Footer() {
             Gerenciar preferências de cookies
           </button>
           <p className="text-warm-white/34 text-xs mb-2">
-            Carlos Benjamim Morais Sociedade Individual de Advocacia - CNPJ: 47.878.182/0001-61
+            {LAW_FIRM.legalName} - Registro {LAW_FIRM.oabRegistration} - CNPJ: {LAW_FIRM.cnpj}
           </p>
           <p className="text-warm-white/34 text-xs">
             © {new Date().getFullYear()} CBM Agro e Gestão de Passivos. Todos os direitos reservados.

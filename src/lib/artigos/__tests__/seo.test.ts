@@ -23,7 +23,7 @@ const publishedArticle: ArticleDocument = {
   draft: false,
   publishedAt: '2026-09-01',
   updatedAt: '2026-09-02',
-  href: '/artigos/publicado',
+  href: '/blog/publicado',
   readingTimeMinutes: 5,
   body: 'Conteúdo publicado.',
   plainText: 'Conteúdo publicado.',
@@ -38,7 +38,7 @@ const draftArticle: ArticleDocument = {
   draft: true,
   publishedAt: null,
   updatedAt: null,
-  href: '/artigos/draft',
+  href: '/blog/draft',
   sourcePath: '/tmp/draft.mdx',
 }
 
@@ -54,7 +54,7 @@ describe('article SEO helpers', () => {
   it('gera canonical e openGraph article a partir do documento', () => {
     const metadata = createArticleMetadata(publishedArticle)
 
-    expect(metadata.alternates?.canonical).toBe('https://cbmgestaodepassivos.com.br/artigos/publicado')
+    expect(metadata.alternates?.canonical).toBe('https://cbmagro.com.br/blog/publicado')
     expect(metadata.openGraph).toMatchObject({ type: 'article' })
   })
 
@@ -70,24 +70,37 @@ describe('article SEO helpers', () => {
     expect(posting?.dateModified).toBe('2026-09-02')
   })
 
+  it('liga a revisão pela sociedade ao nó da organização e a do advogado a uma pessoa', () => {
+    const findPage = (article: ArticleDocument) => {
+      const posting = createArticleJsonLd(article)['@graph'].find((item) => item['@type'] === 'BlogPosting')
+      return (posting as { mainEntityOfPage: { reviewedBy?: Record<string, unknown> } }).mainEntityOfPage
+    }
+
+    const bySociety = findPage({ ...publishedArticle, reviewedBy: { name: 'CBM Advogados', oab: 'OAB/BA 5.496', kind: 'sociedade' } })
+    const byLawyer = findPage({ ...publishedArticle, reviewedBy: { name: 'Dr. Fulano de Tal', oab: 'OAB/BA 12.345' } })
+
+    expect(bySociety.reviewedBy).toEqual({ '@id': 'https://cbmagro.com.br/#organization' })
+    expect(byLawyer.reviewedBy).toMatchObject({ '@type': 'Person', identifier: 'OAB/BA 12.345' })
+  })
+
   it('não inclui drafts no ItemList', () => {
     const graph = createArticlesJsonLd([publishedArticle, draftArticle])
 
-    expect(JSON.stringify(graph)).toContain('/artigos/publicado')
-    expect(JSON.stringify(graph)).not.toContain('/artigos/draft')
+    expect(JSON.stringify(graph)).toContain('/blog/publicado')
+    expect(JSON.stringify(graph)).not.toContain('/blog/draft')
   })
 
   it('inclui rotas públicas existentes e exclui drafts', () => {
     const urls = createSitemapEntries([publishedArticle, draftArticle]).map((entry) => entry.url)
 
-    expect(urls).toContain('https://cbmgestaodepassivos.com.br/')
-    expect(urls).toContain('https://cbmgestaodepassivos.com.br/artigos')
-    expect(urls).toContain('https://cbmgestaodepassivos.com.br/artigos/publicado')
-    expect(urls).not.toContain('https://cbmgestaodepassivos.com.br/artigos/draft')
+    expect(urls).toContain('https://cbmagro.com.br/')
+    expect(urls).toContain('https://cbmagro.com.br/blog')
+    expect(urls).toContain('https://cbmagro.com.br/blog/publicado')
+    expect(urls).not.toContain('https://cbmagro.com.br/blog/draft')
   })
 
-  it('remove /artigos quando não existe publicação', () => {
-    expect(createSitemapEntries([]).some((entry) => entry.url.endsWith('/artigos'))).toBe(false)
+  it('remove /blog quando não existe publicação', () => {
+    expect(createSitemapEntries([]).some((entry) => entry.url.endsWith('/blog'))).toBe(false)
   })
 
   it('escapa sinal menor na serialização JSON-LD', () => {

@@ -4,7 +4,9 @@ import Header from '@/components/cbm/Header'
 import Footer from '@/components/cbm/Footer'
 import ArticleCard from '@/components/artigos/ArticleCard'
 import JsonLd from '@/components/artigos/JsonLd'
+import { getPublishedPillars } from '@/lib/artigos/clusters'
 import { articleRepository } from '@/lib/artigos/repository'
+import { BLOG_CLUSTERS } from '@/lib/blog-clusters'
 import { createArticlesJsonLd, createArticlesMetadata } from '@/lib/artigos/seo'
 
 export const dynamic = 'force-static'
@@ -16,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function ArticlesPage() {
   const articles = await articleRepository.getPublishedArticles()
+  const pillars = getPublishedPillars(articles)
 
   return (
     <>
@@ -33,6 +36,29 @@ export default async function ArticlesPage() {
             </p>
           </div>
         </section>
+
+        {pillars.length > 0 ? (
+          <section className="bg-warm-white px-4 py-14 sm:px-6 sm:py-16 lg:px-8" aria-labelledby="pillar-guides-heading">
+            <div className="mx-auto max-w-7xl">
+              <p className="text-sm font-bold uppercase tracking-[0.14em] text-copper">Comece por aqui</p>
+              <h2 id="pillar-guides-heading" className="mt-2 text-3xl font-bold text-teal-dark">Guias por tema</h2>
+              <div className="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                {pillars.map((pillar) => (
+                  <Link
+                    key={pillar.slug}
+                    href={pillar.href}
+                    className="group flex flex-col rounded-[1.25rem] border border-warm-border bg-paper p-6 transition-colors hover:border-copper/45"
+                  >
+                    <span className="text-xs font-bold uppercase tracking-[0.12em] text-copper">
+                      {pillar.cluster ? BLOG_CLUSTERS[pillar.cluster].name : pillar.category}
+                    </span>
+                    <span className="mt-3 text-lg font-bold leading-snug text-teal-dark group-hover:text-copper">{pillar.title}</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
 
         <section className="legal-paper px-4 py-14 sm:px-6 sm:py-20 lg:px-8" aria-labelledby="articles-list-heading">
           <div className="mx-auto max-w-7xl">

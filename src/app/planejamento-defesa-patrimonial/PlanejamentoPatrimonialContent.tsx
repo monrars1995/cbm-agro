@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import StepLeadForm from '@/components/cbm/StepLeadForm'
 import SectionHeading from '@/components/cbm/SectionHeading'
-import Footer from '@/components/cbm/Footer'
 
 export default function PlanejamentoPatrimonialContent() {
   return (
@@ -31,12 +30,12 @@ export default function PlanejamentoPatrimonialContent() {
               </p>
 
               <h1 className="mb-6 text-4xl font-bold leading-[1.06] text-warm-white sm:text-5xl lg:text-5xl">
-                O patrimônio de uma vida de trabalho{' '}
-                <span className="text-gold-light">não pode ficar vulnerável a um contrato mal redigido.</span>
+                Holding rural e planejamento patrimonial{' '}
+                <span className="text-gold-light">para organizar bens, garantias e sucessão da família.</span>
               </h1>
 
               <p className="mb-8 max-w-2xl text-lg leading-relaxed text-warm-white/72">
-                Organização jurídica de bens, estruturação de contratos e sucessão planejada evitam disputas, protegem a fazenda e preservam o que foi construído em gerações.
+                A organização jurídica dos bens, a revisão das garantias prestadas e a sucessão planejada reduzem disputas e dão previsibilidade à continuidade da fazenda entre gerações.
               </p>
 
               <ul className="space-y-3 mb-8">
@@ -108,7 +107,7 @@ export default function PlanejamentoPatrimonialContent() {
             O melhor momento para proteger o patrimônio é antes que ele esteja sob ameaça
           </h2>
           <p className="text-text-medium mb-8 max-w-2xl mx-auto leading-relaxed">
-            Uma estrutura patrimonial revisada custa uma fração do prejuízo de uma única cobrança mal estruturada — e garante que a fazenda continue produtiva por gerações.
+            O planejamento patrimonial é mais eficaz quando feito com antecedência e com as dívidas mapeadas. Transferências feitas depois de uma cobrança podem ser questionadas pelos credores.
           </p>
           <Button
             onClick={() => document.getElementById('lp-form')?.scrollIntoView({ behavior: 'smooth' })}
@@ -120,7 +119,6 @@ export default function PlanejamentoPatrimonialContent() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

@@ -1,25 +1,29 @@
 import type { Metadata } from 'next'
-import { SITE_URL } from '@/lib/artigos/seo'
+import Header from '@/components/cbm/Header'
+import Footer from '@/components/cbm/Footer'
+import ServicePageExtras from '@/components/cbm/ServicePageExtras'
+import { createPageMetadata } from '@/lib/page-metadata'
+import { SERVICES } from '@/lib/services'
 import PlanejamentoPatrimonialContent from './PlanejamentoPatrimonialContent'
 
-export const metadata: Metadata = {
-  title: 'Planejamento e Defesa Patrimonial Rural',
-  description:
-    'Organização jurídica de bens, contratos e sucessão para proteger o patrimônio rural construído em gerações contra cobranças e disputas futuras.',
-  alternates: {
-    canonical: `${SITE_URL}/planejamento-defesa-patrimonial`,
-  },
-  openGraph: {
-    type: 'website',
-    url: `${SITE_URL}/planejamento-defesa-patrimonial`,
-    title: 'Planejamento e Defesa Patrimonial Rural | CBM Agro e Gestão de Passivos',
-    description:
-      'Organização jurídica de bens, contratos e sucessão para proteger o patrimônio rural construído em gerações.',
-    siteName: 'CBM Agro e Gestão de Passivos',
-    locale: 'pt_BR',
-  },
-}
+const service = SERVICES['planejamento-defesa-patrimonial']
+
+export const metadata: Metadata = createPageMetadata({
+  path: `/${service.slug}`,
+  title: service.title,
+  description: service.description,
+  absoluteTitle: true,
+})
 
 export default function PlanejamentoDefesaPatrimonialPage() {
-  return <PlanejamentoPatrimonialContent />
+  return (
+    <>
+      <Header />
+      <main>
+        <PlanejamentoPatrimonialContent />
+        <ServicePageExtras slug={service.slug} />
+      </main>
+      <Footer />
+    </>
+  )
 }

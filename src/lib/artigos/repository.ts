@@ -27,6 +27,7 @@ function formatError(error: unknown): string {
 
 function toPlainText(body: string): string {
   return body
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, ' ')
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
@@ -108,7 +109,7 @@ export function createArticleRepository(options: ArticleRepositoryOptions): Arti
           body,
           plainText,
           sourcePath,
-          href: `/artigos/${frontmatter.slug}` as const,
+          href: `/blog/${frontmatter.slug}` as const,
           readingTimeMinutes: calculateReadingTimeMinutes(plainText),
         }
       } catch (error) {
@@ -164,7 +165,7 @@ export function createArticleRepository(options: ArticleRepositoryOptions): Arti
 }
 
 export const articleRepository = createArticleRepository({
-  contentDir: path.join(process.cwd(), 'content', 'artigos'),
+  contentDir: path.join(process.cwd(), 'content', 'blog'),
   publicDir: path.join(process.cwd(), 'public'),
   environment: process.env.NODE_ENV === 'production' ? 'production' : 'development',
 })

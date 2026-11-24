@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import StepLeadForm from '@/components/cbm/StepLeadForm'
 import SectionHeading from '@/components/cbm/SectionHeading'
-import Footer from '@/components/cbm/Footer'
 
 const reviewPoints = [
   {
@@ -56,8 +55,8 @@ export default function AnaliseContratoContent() {
             </p>
 
             <h1 className="mb-6 text-4xl font-bold leading-[1.06] text-warm-white sm:text-5xl lg:text-6xl">
-              Contrato não é formalidade.{' '}
-              <span className="text-gold-light">É onde o risco e a proteção da operação são definidos.</span>
+              Análise e elaboração de contratos rurais:{' '}
+              <span className="text-gold-light">CPR, barter, arrendamento e crédito bancário.</span>
             </h1>
 
             <p className="mb-8 max-w-3xl text-lg leading-relaxed text-warm-white/72 sm:text-xl">
@@ -138,7 +137,6 @@ export default function AnaliseContratoContent() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

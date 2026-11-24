@@ -17,7 +17,7 @@ const blogPosts = [
     excerpt: 'Quando a produção falha, o crédito aperta e os boletos vencem, muitos agricultores pensam em vender tudo.',
     readTime: '5 min',
     image: '/images/blog/agricultor-crise.webp',
-    href: '/artigos/agricultor-em-crise-financeira',
+    href: '/blog/agricultor-em-crise-financeira',
   },
   {
     tag: 'Proteção patrimonial',
@@ -25,7 +25,7 @@ const blogPosts = [
     excerpt: 'Quando a crise aperta e a dívida cresce, o produtor rural começa a se preocupar com o que mais importa.',
     readTime: '4 min',
     image: '/images/blog/manter-terra.webp',
-    href: '/artigos/como-manter-sua-terra',
+    href: '/blog/como-manter-sua-terra',
   },
   {
     tag: 'Direito Bancário',
@@ -33,7 +33,7 @@ const blogPosts = [
     excerpt: 'A linha de crédito agrícola, que deveria ser uma solução para custear a produção no campo, muitas vezes se torna um problema.',
     readTime: '6 min',
     image: '/images/blog/linha-credito.webp',
-    href: '/artigos/linha-de-credito-agricola',
+    href: '/blog/linha-de-credito-agricola',
   },
 ]
 
@@ -140,7 +140,7 @@ export default function Blog() {
             asChild
             className="group rounded-xl bg-copper px-8 py-3 font-semibold text-warm-white transition-all duration-300 hover:bg-clay hover:shadow-lg hover:shadow-copper/20"
           >
-            <Link href="/artigos">
+            <Link href="/blog">
               Ver todos os artigos
               <ArrowRight className="ml-2 size-4 transition-transform group-hover:translate-x-1" />
             </Link>

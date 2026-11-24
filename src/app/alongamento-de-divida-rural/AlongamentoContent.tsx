@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import StepLeadForm from '@/components/cbm/StepLeadForm'
 import SectionHeading from '@/components/cbm/SectionHeading'
-import Footer from '@/components/cbm/Footer'
 
 export default function AlongamentoContent() {
   return (
@@ -31,19 +30,19 @@ export default function AlongamentoContent() {
               </p>
 
               <h1 className="mb-6 text-4xl font-bold leading-[1.06] text-warm-white sm:text-5xl lg:text-5xl">
-                Alongar a dívida rural não é favor do banco.{' '}
-                <span className="text-gold-light">É direito que precisa ser exigido.</span>
+                Alongamento de dívida rural{' '}
+                <span className="text-gold-light">é direito do produtor quando a lei prevê, não favor do banco.</span>
               </h1>
 
               <p className="mb-8 max-w-2xl text-lg leading-relaxed text-warm-white/72">
-                Se a safra foi frustrada por clima, pragas ou queda de preço, a estratégia começa antes do vencimento: laudo, notificação formal e capacidade real de pagamento.
+                Se a safra foi frustrada por clima, pragas ou dificuldade de comercialização, o pedido de prorrogação deve ser feito por escrito, de preferência antes do vencimento, com laudo e proposta de pagamento compatível com a capacidade real.
               </p>
 
               <ul className="space-y-3 mb-8">
                 {[
-                  'Manutenção dos juros originais contratados',
-                  'Blindagem contra inclusão no SERASA/SPC',
-                  'Proteção de tratores, maquinários e da fazenda',
+                  'Prorrogação com os encargos originalmente pactuados (MCR)',
+                  'Pedido formal e documentado junto ao banco',
+                  'Cronograma compatível com as próximas safras',
                 ].map((item) => (
                   <li key={item} className="flex items-center gap-3 text-warm-white/80">
                     <Check className="size-5 shrink-0 text-gold-light" />
@@ -119,19 +118,19 @@ export default function AlongamentoContent() {
           <Card className="rounded-[1.75rem] border-copper/20 bg-transparent shadow-none">
             <CardContent className="p-8 sm:p-10 text-center">
               <h3 className="text-2xl font-bold text-teal-dark mb-4">
-                Por que agir imediatamente?
+                Por que formalizar o pedido antes do vencimento?
               </h3>
               <p className="text-text-medium mb-4 max-w-3xl mx-auto leading-relaxed">
-                Quando o produtor não toma a iniciativa formal e simplesmente deixa a dívida rural vencer, ele abre espaço para o banco classificar o contrato como inadimplido.
+                Quando a dívida vence sem um pedido formal de prorrogação, o banco pode tratar a operação como inadimplida.
               </p>
               <p className="text-text-medium mb-8 max-w-3xl mx-auto leading-relaxed">
-                Isso autoriza a cobrança imediata de juros moratórios astronômicos, o protesto da cédula e o início célere da execução judicial, que pode culminar na penhora dos maquinários indispensáveis ao plantio.
+                A partir daí podem incidir encargos de mora, protesto da cédula e execução judicial. O pedido documentado antes do vencimento registra a situação do produtor e fundamenta a prorrogação.
               </p>
               <Button
                 onClick={() => document.getElementById('lp-form')?.scrollIntoView({ behavior: 'smooth' })}
                 className="group rounded-xl bg-copper px-8 py-6 text-base font-semibold text-warm-white transition-all duration-300 hover:bg-clay hover:shadow-lg hover:shadow-clay/15"
               >
-                Fazer Diagnóstico Gratuito da Minha Cédula
+                Solicitar análise da cédula
                 <ArrowRight className="size-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
             </CardContent>
@@ -165,10 +164,10 @@ export default function AlongamentoContent() {
                 Dr. Carlos Benjamim
               </h3>
               <p className="text-text-medium leading-relaxed mb-4">
-                Líder e porta-voz da CBM Advogados, o <strong className="text-teal">Dr. Carlos Benjamim</strong> atua de forma intransigente na defesa dos direitos do produtor rural contra abusos do sistema financeiro.
+                Advogado titular da CBM Advogados, o <strong className="text-teal">Dr. Carlos Benjamim</strong> atua na defesa de produtores rurais em contratos e operações de crédito rural.
               </p>
               <p className="text-text-medium leading-relaxed mb-8">
-                Seu propósito é equilibrar as forças no agronegócio, mostrando aos bancos que o risco da atividade rural é compartilhado e que a lei protege o produtor que gera a riqueza de nosso país. A CBM Advogados une tecnologia de ponta, agilidade digital e uma equipe altamente especializada no Direito do Agronegócio para blindar seu patrimônio em qualquer lugar do Brasil.
+                A atuação parte de um princípio da legislação do crédito rural: o risco da atividade agrícola é reconhecido pela lei, que prevê instrumentos como a prorrogação de dívidas em caso de frustração de safra. A equipe atende produtores de todo o Brasil, com atendimento remoto e escritório em Feira de Santana (BA).
               </p>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
@@ -189,7 +188,6 @@ export default function AlongamentoContent() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

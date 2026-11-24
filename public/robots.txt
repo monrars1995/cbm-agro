@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://cbmgestaodepassivos.com.br/sitemap.xml

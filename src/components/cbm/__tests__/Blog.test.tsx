@@ -6,9 +6,9 @@ describe('home blog cards', () => {
   it('torna cada card da home um link para o artigo correspondente', () => {
     const html = renderToStaticMarkup(<Blog />)
 
-    expect(html).toContain('href="/artigos/agricultor-em-crise-financeira"')
-    expect(html).toContain('href="/artigos/como-manter-sua-terra"')
-    expect(html).toContain('href="/artigos/linha-de-credito-agricola"')
+    expect(html).toContain('href="/blog/agricultor-em-crise-financeira"')
+    expect(html).toContain('href="/blog/como-manter-sua-terra"')
+    expect(html).toContain('href="/blog/linha-de-credito-agricola"')
   })
 
   it('mantém o CTA de contato por cima do link do card', () => {

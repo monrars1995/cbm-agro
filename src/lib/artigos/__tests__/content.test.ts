@@ -32,22 +32,31 @@ describe('initial articles publication', () => {
     expect(article?.body.length).toBeGreaterThan(2500)
   })
 
-  it('mantém exatamente os três conteúdos iniciais publicados', async () => {
-    const articles = await articleRepository.getAllArticles()
+  it('mantém publicados os três conteúdos iniciais', async () => {
+    const published = await articleRepository.getPublishedArticles()
 
-    expect(articles.map(({ slug }) => slug).sort()).toEqual([
+    expect(published.map(({ slug }) => slug)).toEqual(expect.arrayContaining([
       'agricultor-em-crise-financeira',
       'como-manter-sua-terra',
       'linha-de-credito-agricola',
-    ])
-    expect(articles.every(({ draft }) => draft)).toBe(false)
+    ]))
+    expect(published.every(({ draft }) => !draft)).toBe(true)
   })
 
-  it('pré-renderiza os três slugs publicados para generateStaticParams', async () => {
-    await expect(articleRepository.getPublishedSlugs()).resolves.toEqual([
+  it('deixa os rascunhos fora da lista publicada', async () => {
+    const all = await articleRepository.getAllArticles()
+    const publishedSlugs = new Set(await articleRepository.getPublishedSlugs())
+
+    for (const article of all.filter(({ draft }) => draft)) {
+      expect(publishedSlugs.has(article.slug), `${article.slug} é rascunho`).toBe(false)
+    }
+  })
+
+  it('pré-renderiza os slugs publicados para generateStaticParams', async () => {
+    await expect(articleRepository.getPublishedSlugs()).resolves.toEqual(expect.arrayContaining([
       'agricultor-em-crise-financeira',
       'como-manter-sua-terra',
       'linha-de-credito-agricola',
-    ])
+    ]))
   })
 })
