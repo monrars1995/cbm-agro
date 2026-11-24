@@ -39,6 +39,14 @@ export const NAP = {
 /** Endereço em uma linha, idêntico ao Perfil da Empresa no Google (confirmado pelo cliente em 2026-11-24). */
 export const NAP_ADDRESS_LINE = `${NAP.building} - ${NAP.streetAddress} - ${NAP.neighborhood}, ${NAP.city} - ${NAP.region}, ${NAP.postalCode}`
 
+/** Sociedade de advogados responsável pelo site (Provimento OAB 205/2021: nome e registro na OAB). */
+export const LAW_FIRM = {
+  name: 'CBM Advogados',
+  legalName: 'Carlos Benjamim Morais Sociedade Individual de Advocacia',
+  oabRegistration: 'OAB/BA 5.496',
+  cnpj: '47.878.182/0001-61',
+} as const
+
 export const SOCIAL_PROFILES = [
   'https://www.instagram.com/cbmgestaodepassivos',
   'https://www.linkedin.com/company/cbm-gestao-de-passivos',

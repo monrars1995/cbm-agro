@@ -70,6 +70,19 @@ describe('article SEO helpers', () => {
     expect(posting?.dateModified).toBe('2026-09-02')
   })
 
+  it('liga a revisão pela sociedade ao nó da organização e a do advogado a uma pessoa', () => {
+    const findPage = (article: ArticleDocument) => {
+      const posting = createArticleJsonLd(article)['@graph'].find((item) => item['@type'] === 'BlogPosting')
+      return (posting as { mainEntityOfPage: { reviewedBy?: Record<string, unknown> } }).mainEntityOfPage
+    }
+
+    const bySociety = findPage({ ...publishedArticle, reviewedBy: { name: 'CBM Advogados', oab: 'OAB/BA 5.496', kind: 'sociedade' } })
+    const byLawyer = findPage({ ...publishedArticle, reviewedBy: { name: 'Dr. Fulano de Tal', oab: 'OAB/BA 12.345' } })
+
+    expect(bySociety.reviewedBy).toEqual({ '@id': 'https://cbmagro.com.br/#organization' })
+    expect(byLawyer.reviewedBy).toMatchObject({ '@type': 'Person', identifier: 'OAB/BA 12.345' })
+  })
+
   it('não inclui drafts no ItemList', () => {
     const graph = createArticlesJsonLd([publishedArticle, draftArticle])
 

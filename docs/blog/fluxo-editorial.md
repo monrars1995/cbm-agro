@@ -7,7 +7,7 @@ Plano completo, mapa de clusters e briefings: pasta `seo-cbm/etapa-3` nos arquiv
 | Etapa | Quem | Prazo | Saída |
 |---|---|---|---|
 | 1. Rascunho | Redação | até 4 dias úteis antes da publicação | `content/blog/<slug>.mdx` com `draft: true`, seguindo o briefing e `docs/blog/modelo-artigo.mdx` |
-| 2. Revisão jurídica | Advogado revisor | até 2 dias úteis antes | Normas e precedentes conferidos na versão vigente, checklist OAB marcado, `reviewedBy` preenchido |
+| 2. Revisão jurídica | Advogado revisor | até 2 dias úteis antes | Normas e precedentes conferidos na versão vigente, checklist OAB marcado, notas `REVISAR` resolvidas e apagadas. `reviewedBy` já vem com a sociedade (CBM Advogados, OAB/BA 5.496); para assinar como advogado, troque nome e OAB e apague `kind` |
 | 3. Revisão de SEO | Responsável pelo SEO | 1 dia útil antes | `seoTitle`, `description`, links obrigatórios e imagem conferidos; `npm test` passando |
 | 4. Publicação | Responsável pelo site | dia previsto | `draft: false`, `publishedAt` e `updatedAt` preenchidos, deploy |
 | 5. Indexação | Responsável pelo SEO | mesmo dia | Inspeção de URL no Search Console e pedido de indexação |

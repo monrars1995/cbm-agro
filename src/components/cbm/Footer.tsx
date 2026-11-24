@@ -3,7 +3,7 @@
 import { Instagram, Linkedin, Facebook, Phone, Mail, MapPin } from 'lucide-react'
 import Image from 'next/image'
 import { trackFooterClick, trackPhoneClick, trackEmailClick, trackSocialClick } from '@/lib/dataLayer'
-import { NAP, NAP_ADDRESS_LINE, SOCIAL_PROFILES } from '@/lib/site'
+import { NAP, NAP_ADDRESS_LINE, SOCIAL_PROFILES, LAW_FIRM } from '@/lib/site'
 
 const navLinks = [
   { label: 'Início', href: '/#inicio' },
@@ -171,7 +171,7 @@ export default function Footer() {
             Gerenciar preferências de cookies
           </button>
           <p className="text-warm-white/34 text-xs mb-2">
-            Carlos Benjamim Morais Sociedade Individual de Advocacia - CNPJ: 47.878.182/0001-61
+            {LAW_FIRM.legalName} - Registro {LAW_FIRM.oabRegistration} - CNPJ: {LAW_FIRM.cnpj}
           </p>
           <p className="text-warm-white/34 text-xs">
             © {new Date().getFullYear()} CBM Agro e Gestão de Passivos. Todos os direitos reservados.

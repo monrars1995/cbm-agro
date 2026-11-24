@@ -5,6 +5,7 @@ import Script from "next/script";
 import CookieConsent from "@/components/cbm/CookieConsent";
 import {
   DEFAULT_OG_IMAGE,
+  LAW_FIRM,
   NAP,
   ORGANIZATION_ID,
   SITE_ALTERNATE_NAME,
@@ -97,6 +98,13 @@ const jsonLd = {
       "@id": ORGANIZATION_ID,
       name: SITE_NAME,
       alternateName: SITE_ALTERNATE_NAME,
+      legalName: LAW_FIRM.legalName,
+      taxID: LAW_FIRM.cnpj,
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "Registro na OAB",
+        value: LAW_FIRM.oabRegistration,
+      },
       url: `${SITE_URL}/`,
       logo: {
         "@type": "ImageObject",

@@ -32,6 +32,8 @@ export const ArticleFrontmatterSchema = z.object({
   reviewedBy: z.object({
     name: z.string().min(5),
     oab: z.string().regex(/^OAB\/[A-Z]{2} \d{1,3}(?:\.\d{3})*(?:-[A-Z])?$/, 'Use o formato OAB/BA 12.345'),
+    /** "sociedade" quando a revisão é assinada pela sociedade de advogados (registro da sociedade na OAB). */
+    kind: z.enum(['advogado', 'sociedade']).optional(),
   }).optional(),
 }).superRefine((value, ctx) => {
   if (value.pillar && !value.cluster) {

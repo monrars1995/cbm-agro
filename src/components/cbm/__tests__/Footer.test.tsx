@@ -10,4 +10,8 @@ describe('footer service navigation', () => {
     expect(html).toContain('href="/contencioso-tributario-rural"')
     expect(html).toContain('href="/planejamento-defesa-patrimonial"')
   })
+
+  it('mostra o registro da sociedade na OAB, como pede o Provimento 205/2021', () => {
+    expect(renderToStaticMarkup(<Footer />)).toContain('Registro OAB/BA 5.496')
+  })
 })

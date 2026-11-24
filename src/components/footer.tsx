@@ -11,6 +11,7 @@ import {
   Instagram,
 } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
+import { LAW_FIRM } from "@/lib/site";
 
 const servicesLinks = [
   "Defesa contra Cobrança",
@@ -191,7 +192,7 @@ export function Footer() {
             © 2025 CBM Agro e Gestão de Passivos. Todos os direitos reservados.
           </p>
           <p className="text-white/40 text-sm">
-            OAB/BA nº XX.XXX
+            Registro {LAW_FIRM.oabRegistration}
           </p>
         </div>
       </div>

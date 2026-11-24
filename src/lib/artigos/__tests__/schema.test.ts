@@ -62,6 +62,15 @@ describe('ArticleFrontmatterSchema: campos do plano editorial', () => {
     expect(parsed.reviewedBy?.oab).toBe('OAB/BA 12.345')
   })
 
+  it('aceita revisão assinada pela sociedade de advogados', () => {
+    const parsed = ArticleFrontmatterSchema.parse({
+      ...validDraft,
+      reviewedBy: { name: 'CBM Advogados', oab: 'OAB/BA 5.496', kind: 'sociedade' },
+    })
+
+    expect(parsed.reviewedBy?.kind).toBe('sociedade')
+  })
+
   it('rejeita cluster inexistente', () => {
     expect(() => ArticleFrontmatterSchema.parse({ ...validDraft, cluster: 'outro-tema' })).toThrow()
   })

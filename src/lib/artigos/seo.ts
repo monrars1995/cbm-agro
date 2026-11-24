@@ -138,13 +138,15 @@ export function createArticleJsonLd(article: ArticleDocument): { '@context': 'ht
           '@id': url,
           ...(article.reviewedBy
             ? {
-                reviewedBy: {
-                  '@type': 'Person',
-                  name: article.reviewedBy.name,
-                  jobTitle: 'Advogado',
-                  identifier: article.reviewedBy.oab,
-                  worksFor: { '@id': ORGANIZATION_ID },
-                },
+                reviewedBy: article.reviewedBy.kind === 'sociedade'
+                  ? { '@id': ORGANIZATION_ID }
+                  : {
+                      '@type': 'Person',
+                      name: article.reviewedBy.name,
+                      jobTitle: 'Advogado',
+                      identifier: article.reviewedBy.oab,
+                      worksFor: { '@id': ORGANIZATION_ID },
+                    },
               }
             : {}),
         },
