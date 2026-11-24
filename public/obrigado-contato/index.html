@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitação Recebida com Sucesso — CBM Agro</title>
+    <meta name="description" content="Seus dados foram enviados com sucesso ao plantão CBM Agro. Acesse o atendimento prioritário via WhatsApp.">
+    <link rel="stylesheet" href="../css/lp-styles.css">
+    
+    <!-- ==========================================================================
+         [FUNÇÃO TÉCNICA OCULTA] INSERÇÃO DAS TAGS DE CONVERSÃO DO GOOGLE ADS
+         Esta é a página de sucesso (conversão). Insira aqui as tags do Google Ads.
+         ========================================================================== -->
+    
+    <!-- Exemplo de Tag Global (gtag.js) - Remova os comentários e substitua o AW-CONVERSION-ID pelo seu ID real -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-CONVERSION-ID"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-CONVERSION-ID');
+    </script>
+    -->
+
+    <!-- Exemplo de Evento de Conversão - Disparado automaticamente no carregamento desta página -->
+    <!--
+    <script>
+      gtag('event', 'conversion', {
+          'send_to': 'AW-CONVERSION-ID/CONVERSION-LABEL',
+          'value': 1.0,
+          'currency': 'BRL'
+      });
+    </script>
+    -->
+    
+    <style>
+        .thank-you-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            text-align: center;
+            padding: 40px 24px;
+        }
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.08);
+            border: 2px solid var(--accent-emerald);
+            color: var(--accent-emerald);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-glow-emerald);
+            animation: scale-up-icon 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        .thank-you-title {
+            font-size: 2.2rem;
+            margin-bottom: 16px;
+            font-weight: 800;
+        }
+        .thank-you-text {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+        @keyframes scale-up-icon {
+            from { transform: scale(0.6); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Gradient Mesh Background -->
+    <div class="bg-gradient-mesh"></div>
+
+    <!-- HEADER -->
+    <header>
+        <div class="container header-wrap">
+            <div class="logo">
+                <img src="../logo.webp" alt="Logo CBM Advogados" onerror="this.src='https://placehold.co/48x48/07170e/c5a880?text=CBM';">
+                <div>
+                    <span class="logo-text">CBM AGRO</span>
+                    <span class="logo-sub">Defesa Jurídica do Campo</span>
+                </div>
+            </div>
+            
+            <nav class="header-nav">
+                <a href="../alongamento-de-divida-rural/" class="nav-link">Alongamento de Dívida</a>
+                <a href="../defesa-execucao-rural/" class="nav-link">Defesa contra Execução</a>
+                <a href="../defesa-busca-e-apreensao-agricola/" class="nav-link">Busca de Maquinário</a>
+            </nav>
+            
+            <a href="https://wa.me/557196772343?text=Olá,%20acabei%20de%20enviar%20o%20formulário%20comercial%20e%20gostaria%20de%20um%20atendimento%20prioritário." class="btn btn-ghost" style="padding: 10px 20px; font-size: 0.85rem;" target="_blank">
+                WhatsApp Prioritário
+            </a>
+        </div>
+    </header>
+
+    <!-- THANK YOU CONTENT -->
+    <section class="container">
+        <div class="glass-card glass-card-gold thank-you-container" style="margin-top: 40px; border-color: rgba(197, 168, 128, 0.25);">
+            <div class="success-icon">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            
+            <h1 class="thank-you-title">Dados Recebidos com <span class="text-gold">Sucesso</span>!</h1>
+            
+            <!-- Mensagem dinâmica que será injetada por JS baseada no Lead -->
+            <p class="thank-you-text" id="custom-message">
+                Muito obrigado por enviar suas informações. Nossa equipe de especialistas em Direito Bancário do Agronegócio já foi notificada e está realizando a triagem inicial do seu caso.
+            </p>
+
+            <div class="glass-card" style="padding: 28px; max-width: 540px; width: 100%; border-color: var(--border-gold-low); background: rgba(7, 23, 14, 0.4); margin-bottom: 24px;">
+                <h3 style="font-size: 1.15rem; margin-bottom: 12px; font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 700; color: #fff;">O seu caso é urgente?</h3>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px; line-height: 1.5;">
+                    Nosso tempo médio de resposta por ligação é de 15 minutos. Caso prefira pular a fila e falar agora mesmo com o advogado de plantão, acione nosso WhatsApp Prioritário.
+                </p>
+                <a href="https://wa.me/557196772343?text=Olá,%20acabei%20de%20enviar%20o%20formulário%20comercial%20e%20gostaria%20de%20um%20atendimento%20prioritário." class="btn btn-emerald" id="whatsapp-btn" target="_blank" style="width: 100%; font-size: 1rem; padding: 14px 20px; background: #25d366; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: middle; margin-right: 8px;"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.513 2.262 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.725 1.45 5.39-.003 9.778-4.388 9.782-9.774.002-2.607-1.011-5.059-2.853-6.902C16.398 2.086 13.95 1.07 11.34 1.07c-5.395 0-9.782 4.387-9.786 9.775-.001 1.702.464 3.364 1.343 4.825l-.997 3.646 3.75-.984zM17.43 14.38c-.29-.145-1.72-.85-1.985-.947-.267-.098-.46-.147-.655.147-.196.293-.76.953-.93 1.15-.173.195-.347.22-.637.074-.29-.145-1.226-.452-2.337-1.443-.864-.77-1.448-1.72-1.618-2.013-.17-.293-.018-.452.127-.597.13-.13.29-.34.436-.51.145-.17.194-.292.29-.487.1-.195.048-.365-.024-.51-.073-.146-.656-1.58-.9-2.17-.236-.57-.497-.49-.655-.498-.154-.008-.332-.01-.508-.01-.177 0-.466.066-.71.332-.243.266-.93.908-.93 2.214 0 1.306.95 2.564 1.08 2.74.135.176 1.87 2.854 4.53 4.004.633.273 1.127.437 1.512.56.637.202 1.215.174 1.673.106.51-.077 1.72-.703 1.963-1.38.243-.678.243-1.26.17-1.38-.073-.12-.27-.22-.56-.365z"/>
+                </svg>
+                CHAMAR AGORA NO WHATSAPP PRIORITÁRIO
+            </a>
+        </div>
+        
+        <div style="text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 16px;">
+            Aguarde. Você receberá um contato telefônico do DDD (11) ou (65) em instantes.
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer style="margin-top: 80px;">
+        <div class="container footer-grid">
+            <div class="footer-copy">
+                <p>&copy; 2026 CBM Advogados. Todos os direitos reservados.</p>
+                <p style="font-size: 0.70rem; margin-top: 4px;">CNPJ: 00.000.000/0001-00 | OAB/UF nº 000.000</p>
+            </div>
+            <div class="footer-links">
+                <a href="../politica-de-privacidade/">Política de Privacidade</a>
+                <a href="../termos-de-uso/">Termos de Uso</a>
+                <a href="../politica-de-cookies/">Política de Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT INTELIGENTE PARA PERSONALIZAÇÃO DO CONTEXTO -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // 1. Recuperar dados do lead salvos no localStorage
+            const leadDataJson = localStorage.getItem('cbm_agro_lead');
+            let leadData = null;
+            if (leadDataJson) {
+                try {
+                    leadData = JSON.parse(leadDataJson);
+                } catch(e) {
+                    console.error("Erro ao analisar dados do lead", e);
+                }
+            }
+
+            // 2. Analisar parâmetros da URL para identificar a origem (Alongamento, Defesa, Urgência)
+            const urlParams = new URLSearchParams(window.location.search);
+            const sourceParam = urlParams.get('src') || '';
+            
+            // 3. Selecionar elementos do DOM
+            const messageEl = document.getElementById('custom-message');
+            const whatsappBtn = document.getElementById('whatsapp-btn');
+            
+            // 4. Customização Dinâmica
+            let firstName = leadData ? leadData.name.split(' ')[0] : 'Produtor';
+            // Garantir capitalização correta do primeiro nome
+            firstName = firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+            
+            let messageText = `Olá, ${firstName}! Recebemos seus dados de contato com sucesso. Nossa equipe de defensores do agronegócio já está realizando o levantamento preliminar do seu caso para te ligar com soluções concretas em instantes.`;
+            let whatsappText = `Olá,%20acabei%20de%20enviar%20o%20formulário%20comercial%20e%20preciso%20de%20atendimento%20prioritário.`;
+            
+            // Customização baseada no tipo de Landing Page que enviou o lead
+            if (sourceParam === 'alongamento' || (leadData && leadData.source === 'lp_alongamento')) {
+                messageText = `Olá, ${firstName}! Seu pedido de análise jurídica para <strong>Alongamento de Dívida Rural (Súmula 298 do STJ)</strong> foi recebido com sucesso. Nosso time de especialistas em direito de crédito rural está triando sua solicitação agora mesmo.`;
+                whatsappText = `Olá!%20Meu%20nome%20é%20${encodeURIComponent(firstName)}.%20Acabei%20de%20solicitar%20a%20avaliação%20de%20Alongamento%20de%20Dívida%20Rural%20no%20site%20e%20gostaria%20de%20iniciar%20a%20análise%20prioritária%20do%20meu%20caso.`;
+            } else if (sourceParam === 'defesa' || (leadData && leadData.source === 'lp_defesa')) {
+                messageText = `Olá, ${firstName}! Seus dados foram cadastrados com sucesso no setor de <strong>Blindagem Patrimonial e Defesa contra Execuções</strong>. Nossa equipe está analisando os dados informados para traçar a melhor estratégia judicial contra as cláusulas abusivas do banco.`;
+                whatsappText = `Olá!%20Meu%20nome%20é%20${encodeURIComponent(firstName)}.%20Acabei%20de%20cadastrar%20meus%20dados%20para%20Defesa%20contra%20Execução%20e%20gostaria%20de%20falar%20urgentemente%20com%20um%20advogado.`;
+                
+                // Mudar a cor de destaque do ícone de sucesso para vermelho se for Defesa/Urgente para criar consistência
+                const successIcon = document.querySelector('.success-icon');
+                if (successIcon) {
+                    successIcon.style.borderColor = 'var(--accent-red)';
+                    successIcon.style.color = 'var(--accent-red)';
+                    successIcon.style.boxShadow = 'var(--shadow-glow-red)';
+                }
+            } else if (sourceParam === 'urgencia' || (leadData && leadData.source === 'lp_urgencia')) {
+                messageText = `Olá, ${firstName}! <strong>ATENÇÃO: Sua triagem prioritária de Busca e Apreensão foi recebida por nossa equipe jurídica de plantão.</strong> Estamos designando um advogado especialista em direito agrícola para entrar em contato com você via ligação telefônica em regime de urgência máxima em menos de 5 minutos.`;
+                whatsappText = `URGENTE!%20Meu%20nome%20é%20${encodeURIComponent(firstName)}.%20Enviei%20meus%20dados%20no%20Plantão%20contra%20Busca%20e%20Apreensão%20de%20Maquinários.%20Preciso%20de%20orientação%20urgente%20de%20um%20especialista%20agora!`;
+                
+                // Estilo urgente na página de obrigado
+                const successIcon = document.querySelector('.success-icon');
+                if (successIcon) {
+                    successIcon.style.borderColor = '#ef4444';
+                    successIcon.style.color = '#ef4444';
+                    successIcon.style.boxShadow = '0 0 25px rgba(239, 68, 68, 0.4)';
+                }
+                const goldTitle = document.querySelector('.text-gold');
+                if (goldTitle) {
+                    goldTitle.innerHTML = 'URGÊNCIA';
+                    goldTitle.style.background = 'linear-gradient(135deg, #ffa8a8 0%, #ef4444 100%)';
+                    goldTitle.style.webkitBackgroundClip = 'text';
+                }
+                const titleText = document.querySelector('.thank-you-title');
+                if (titleText) {
+                    titleText.innerHTML = 'Plantão de Urgência Acionado!';
+                }
+            }
+            
+            // Injetar a mensagem customizada no HTML
+            messageEl.innerHTML = messageText;
+            
+            // Ajustar o link do WhatsApp com a mensagem contextualizada de altíssima conversão
+            whatsappBtn.href = `https://wa.me/557196772343?text=${whatsappText}`;
+        });
+    </script>
+</body>
+</html>
