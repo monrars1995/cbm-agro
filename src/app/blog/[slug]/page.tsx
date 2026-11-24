@@ -47,6 +47,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const published = await articleRepository.getPublishedArticles()
   const relatedArticles = getRelatedArticles(article, published)
   const clusterContext = getArticleClusterContext(article, published)
+  // Artigo publicado só leva link para artigos publicados; a prévia de um rascunho leva para todos.
+  const linkableBlogSlugs = new Set(
+    (article.draft ? await articleRepository.getAllArticles() : published).map(({ slug }) => slug),
+  )
 
   return (
     <>
@@ -74,7 +78,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
                 />
               </div>
               <div className="mt-12">
-                <ArticleBody source={article.body} />
+                <ArticleBody source={article.body} linkableBlogSlugs={linkableBlogSlugs} />
               </div>
               {clusterContext ? (
                 <nav aria-label="Guia do tema" className="mx-auto mt-12 max-w-[72ch] rounded-[1.25rem] border border-warm-border bg-warm-white p-6">

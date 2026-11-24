@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { BLOG_CLUSTERS } from '@/lib/blog-clusters'
+import { SERVICES } from '@/lib/services'
 import { articleRepository } from '../repository'
 
 /**
@@ -24,6 +25,32 @@ describe('regras editoriais do blog', () => {
       const text = `${article.title}\n${article.description}\n${article.body}`
       for (const term of BANNED_TERMS) {
         expect(text, `${article.slug} contém ${term}`).not.toMatch(term)
+      }
+    }
+  })
+
+  it('não publica artigo com nota de revisão pendente', async () => {
+    const published = await articleRepository.getPublishedArticles()
+
+    for (const article of published) {
+      expect(article.body, `${article.slug} ainda tem nota REVISAR`).not.toMatch(/REVISAR/)
+    }
+  })
+
+  it('aponta links internos só para artigos e páginas de serviço que existem', async () => {
+    // Link para rascunho é permitido: a página mostra o texto sem link até o rascunho publicar.
+    const all = await articleRepository.getAllArticles()
+    const slugs = new Set(all.map(({ slug }) => slug))
+    const servicePages = new Set<string>(Object.keys(SERVICES))
+
+    for (const article of all) {
+      for (const [, target] of article.body.matchAll(/\]\(\/([^)#?\s]*)/g)) {
+        if (target.startsWith('blog/')) {
+          const slug = target.slice('blog/'.length)
+          expect(slugs.has(slug), `${article.slug} aponta para /blog/${slug}, que não existe`).toBe(true)
+        } else if (!target.startsWith('images/')) {
+          expect(servicePages.has(target), `${article.slug} aponta para /${target}, que não é página de serviço`).toBe(true)
+        }
       }
     }
   })

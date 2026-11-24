@@ -27,6 +27,7 @@ function formatError(error: unknown): string {
 
 function toPlainText(body: string): string {
   return body
+    .replace(/\{\/\*[\s\S]*?\*\/\}/g, ' ')
     .replace(/```[\s\S]*?```/g, ' ')
     .replace(/!\[([^\]]*)\]\([^)]*\)/g, '$1')
     .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
