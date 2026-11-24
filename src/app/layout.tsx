@@ -111,7 +111,7 @@ const jsonLd = {
       email: NAP.email,
       address: {
         "@type": "PostalAddress",
-        streetAddress: NAP.streetAddress,
+        streetAddress: `${NAP.building} - ${NAP.streetAddress} - ${NAP.neighborhood}`,
         addressLocality: NAP.city,
         addressRegion: NAP.region,
         postalCode: NAP.postalCode,

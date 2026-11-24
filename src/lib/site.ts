@@ -24,19 +24,20 @@ export const DEFAULT_OG_IMAGE = {
 export const NAP = {
   name: SITE_NAME,
   phoneE164: '+557196772343',
-  phoneDisplay: '71 99677-2343',
+  phoneDisplay: '(71) 99677-2343',
   whatsappNumber: '557196772343',
   email: 'contato@cbmgestaodepassivos.com.br',
-  streetAddress: 'Av. Getúlio Vargas, 3233, Edf Trade Center, Sala 401 e 402',
+  building: 'Edifício Trade Center',
+  streetAddress: 'Av. Getúlio Vargas, 3233 - Sl 401 e 402',
   neighborhood: 'Santa Mônica',
   city: 'Feira de Santana',
   region: 'BA',
-  postalCode: '44042-010',
+  postalCode: '44077-420',
   country: 'BR',
 } as const
 
-/** Endereço em uma linha, idêntico em todo o site. */
-export const NAP_ADDRESS_LINE = `${NAP.streetAddress} - ${NAP.neighborhood}, ${NAP.city} - ${NAP.region}, ${NAP.postalCode}`
+/** Endereço em uma linha, idêntico ao Perfil da Empresa no Google (confirmado pelo cliente em 2026-11-24). */
+export const NAP_ADDRESS_LINE = `${NAP.building} - ${NAP.streetAddress} - ${NAP.neighborhood}, ${NAP.city} - ${NAP.region}, ${NAP.postalCode}`
 
 export const SOCIAL_PROFILES = [
   'https://www.instagram.com/cbmgestaodepassivos',

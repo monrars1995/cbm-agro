@@ -12,8 +12,8 @@ const contactInfo = [
     icon: MapPin,
     title: 'Endereço',
     lines: [
-      'Av. Getúlio Vargas, 3233',
-      'Edf Trade Center, Sala 401 e 402',
+      NAP.building,
+      NAP.streetAddress,
       `${NAP.neighborhood}, ${NAP.city} - ${NAP.region}`,
       `CEP: ${NAP.postalCode}`,
     ],
