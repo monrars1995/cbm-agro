@@ -10,6 +10,8 @@ interface PageMetadataInput {
   socialTitle?: string
   socialDescription?: string
   noindex?: boolean
+  /** Usa o title exatamente como informado, sem o sufixo do template do layout. */
+  absoluteTitle?: boolean
 }
 
 /**
@@ -23,13 +25,14 @@ export function createPageMetadata({
   socialTitle,
   socialDescription,
   noindex = false,
+  absoluteTitle = false,
 }: PageMetadataInput): Metadata {
   const url = absoluteUrl(path)
-  const ogTitle = socialTitle ?? `${title} | ${SITE_NAME}`
+  const ogTitle = socialTitle ?? (absoluteTitle ? title : `${title} | ${SITE_NAME}`)
   const ogDescription = socialDescription ?? description
 
   return {
-    title,
+    title: absoluteTitle ? { absolute: title } : title,
     description,
     alternates: { canonical: url },
     robots: noindex ? { index: false, follow: true } : { index: true, follow: true },

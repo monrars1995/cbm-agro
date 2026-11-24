@@ -1,15 +1,29 @@
 import type { Metadata } from 'next'
+import Header from '@/components/cbm/Header'
+import Footer from '@/components/cbm/Footer'
+import ServicePageExtras from '@/components/cbm/ServicePageExtras'
 import { createPageMetadata } from '@/lib/page-metadata'
+import { SERVICES } from '@/lib/services'
 import RecuperacaoJudicialContent from './RecuperacaoJudicialContent'
 
+const service = SERVICES['recuperacao-judicial-produtor-rural']
+
 export const metadata: Metadata = createPageMetadata({
-  path: '/recuperacao-judicial-produtor-rural',
-  title: 'Recuperação Judicial do Produtor Rural',
-  description: 'Reorganize dívidas rurais com proteção da lei: suspensão de execuções, plano de viabilidade e continuidade da produção sem perder terra ou maquinário.',
-  socialTitle: 'Recuperação Judicial do Produtor Rural | CBM Agro e Gestão de Passivos',
-  socialDescription: 'Reorganize dívidas rurais com proteção da lei: suspensão de execuções, plano de viabilidade e continuidade da produção.',
+  path: `/${service.slug}`,
+  title: service.title,
+  description: service.description,
+  absoluteTitle: true,
 })
 
 export default function RecuperacaoJudicialProdutorRuralPage() {
-  return <RecuperacaoJudicialContent />
+  return (
+    <>
+      <Header />
+      <main>
+        <RecuperacaoJudicialContent />
+        <ServicePageExtras slug={service.slug} />
+      </main>
+      <Footer />
+    </>
+  )
 }

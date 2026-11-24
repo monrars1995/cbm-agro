@@ -6,7 +6,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import StepLeadForm from '@/components/cbm/StepLeadForm'
 import SectionHeading from '@/components/cbm/SectionHeading'
-import Footer from '@/components/cbm/Footer'
 
 export default function ContenciosoTributarioContent() {
   return (
@@ -31,12 +30,12 @@ export default function ContenciosoTributarioContent() {
               </p>
 
               <h1 className="mb-6 text-4xl font-bold leading-[1.06] text-warm-white sm:text-5xl lg:text-5xl">
-                Passivo fiscal não precisa destruir a margem da safra.{' '}
-                <span className="text-gold-light">Existe defesa administrativa e judicial.</span>
+                Contencioso tributário rural:{' '}
+                <span className="text-gold-light">defesa administrativa e judicial do produtor.</span>
               </h1>
 
               <p className="mb-8 max-w-2xl text-lg leading-relaxed text-warm-white/72">
-                Autuações sobre produção, terra e comercialização se acumulam em silêncio. Quando viram execução fiscal, o descontrole compromete caixa, crédito e patrimônio.
+                Autuações de ITR, Funrural e imposto de renda da atividade rural têm prazos próprios de defesa. Quando não são discutidas a tempo, podem virar execução fiscal e afetar o caixa, as certidões e o acesso a crédito.
               </p>
 
               <ul className="space-y-3 mb-8">
@@ -105,10 +104,10 @@ export default function ContenciosoTributarioContent() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center animate-fade-up">
           <p className="text-copper text-sm font-semibold uppercase tracking-[0.11em] mb-3">Recupere o controle</p>
           <h2 className="text-3xl sm:text-4xl font-bold text-teal-dark mb-4">
-            A defesa tributária certa pode transformar passivo em fôlego para a operação
+            Cada autuação tem prazo de defesa
           </h2>
           <p className="text-text-medium mb-8 max-w-2xl mx-auto leading-relaxed">
-            Cada autuação tem prazo de defesa. Cada enquadramento errado consome margem que deveria financiar a próxima safra. O diagnóstico é o primeiro passo para virar esse jogo.
+            No processo administrativo federal, a impugnação deve ser apresentada em 30 dias da ciência do lançamento. Um diagnóstico do passivo fiscal e do enquadramento da atividade mostra quais pontos podem ser discutidos.
           </p>
           <Button
             onClick={() => document.getElementById('lp-form')?.scrollIntoView({ behavior: 'smooth' })}
@@ -120,7 +119,6 @@ export default function ContenciosoTributarioContent() {
         </div>
       </section>
 
-      <Footer />
     </>
   )
 }

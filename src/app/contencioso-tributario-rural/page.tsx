@@ -1,15 +1,29 @@
 import type { Metadata } from 'next'
+import Header from '@/components/cbm/Header'
+import Footer from '@/components/cbm/Footer'
+import ServicePageExtras from '@/components/cbm/ServicePageExtras'
 import { createPageMetadata } from '@/lib/page-metadata'
+import { SERVICES } from '@/lib/services'
 import ContenciosoTributarioContent from './ContenciosoTributarioContent'
 
+const service = SERVICES['contencioso-tributario-rural']
+
 export const metadata: Metadata = createPageMetadata({
-  path: '/contencioso-tributario-rural',
-  title: 'Contencioso Tributário Rural',
-  description: 'Defesa tributária para o produtor rural: revisão de autuações, defesa administrativa e judicial, e enquadramento fiscal correto da atividade agropecuária.',
-  socialTitle: 'Contencioso Tributário Rural | CBM Agro e Gestão de Passivos',
-  socialDescription: 'Defesa tributária para o produtor rural: revisão de autuações e enquadramento fiscal correto da atividade agropecuária.',
+  path: `/${service.slug}`,
+  title: service.title,
+  description: service.description,
+  absoluteTitle: true,
 })
 
 export default function ContenciosoTributarioRuralPage() {
-  return <ContenciosoTributarioContent />
+  return (
+    <>
+      <Header />
+      <main>
+        <ContenciosoTributarioContent />
+        <ServicePageExtras slug={service.slug} />
+      </main>
+      <Footer />
+    </>
+  )
 }
